@@ -21,7 +21,7 @@ export default function ExperienceCard({ experience: exp, index }: ExperienceCar
                 <div className="absolute left-[-3.5px] top-[9px] w-[8px] h-[8px] rounded-full border border-accent bg-background transition-colors duration-300 group-hover:bg-accent" />
 
                 {/* Period */}
-                <p className="text-xs tracking-[0.2em] uppercase text-accent mb-2 font-medium">
+                <p className="text-xs tracking-[0.2em] uppercase text-accent my-2 font-medium">
                     {exp.period}
                 </p>
 
