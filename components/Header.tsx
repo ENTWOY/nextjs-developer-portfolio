@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { navItems } from "@/data/navigation";
 import { developer } from "@/data/developer";
+import ThemeToggle from "./ThemeToggle";
 
 /**
  * Fixed header with scroll-aware backdrop blur.
@@ -25,8 +26,8 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
-                    ? "bg-background/80 backdrop-blur-md border-b border-border"
-                    : "bg-transparent"
+                ? "bg-background/80 backdrop-blur-md border-b border-border"
+                : "bg-transparent"
                 }`}
         >
             <div className="max-w-6xl mx-auto px-6 md:px-8">
@@ -52,6 +53,9 @@ export default function Header() {
                                 </a>
                             </li>
                         ))}
+                        <li>
+                            <ThemeToggle />
+                        </li>
                     </ul>
 
                     {/* Mobile hamburger */}
