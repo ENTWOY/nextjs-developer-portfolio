@@ -1,34 +1,24 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-/**
- * Dark/Light theme toggle button with animated icons.
- * Replicates the clean aesthetic of shadcn/ui but with custom icons and animations.
- */
+/** Animated theme toggle button. */
 export default function ThemeToggle() {
-    const { theme, setTheme } = useTheme();
-    const [mounted, setMounted] = useState(false);
+    const { resolvedTheme, setTheme } = useTheme();
 
-    // Prevent hydration mismatch by only rendering icons after mounting
-    useEffect(() => {
-        setMounted(true);
-    }, []);
-
-    if (!mounted) {
-        return <div className="w-9 h-9" />; // Placeholder to avoid layout shift
+    if (!resolvedTheme) {
+        return <div className="w-9 h-9" />; // Avoid layout shift
     }
 
     return (
         <button
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
             className="relative w-9 h-9 flex items-center justify-center rounded-md border border-border bg-transparent hover:bg-surface transition-colors duration-200 group"
             aria-label="Toggle theme"
         >
             <AnimatePresence mode="wait" initial={false}>
-                {theme === "dark" ? (
+                {resolvedTheme === "dark" ? (
                     <motion.svg
                         key="moon"
                         initial={{ opacity: 0, rotate: -90, scale: 0.5 }}
