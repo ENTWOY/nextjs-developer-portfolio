@@ -4,7 +4,11 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { navItems } from "@/data/navigation";
 import { developer } from "@/data/developer";
-import ThemeToggle from "./ThemeToggle";
+import dynamic from "next/dynamic";
+const ThemeToggle = dynamic(() => import("./ThemeToggle"), { 
+    ssr: false,
+    loading: () => <div className="w-9 h-9" />
+});
 
 /**
  * Fixed header with scroll-aware backdrop blur.
